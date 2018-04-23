@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+</head>
+<body style="color: blue; font-size: 1.5rem;" background="https://s3.amazonaws.com/launchgood/project%2F7391%2Fhelp_me_to_study_computer_science_407251main_image_1529_800-600.jpg">
+    <h1>Hello World!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+
+    <p id="dynamique"></p>
+
+
+    <script>
+
+    function rafraichir() {
+
+        //Initialisation
+        var datetext = '';
+        var heuretext = '';
+        var date = new Date();
+
+        // Récupération du jour de la semaine (chaine)
+        var jour_actuel = date.getDay();
+        var chaine_jour = Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi');
+        var jour_semaine = chaine_jour[jour_actuel];
+
+        // Mise en forme du jour
+        if ( date.getDate() <= 9 )
+        var jour = '0' + date.getDate();
+        else
+        var jour = date.getDate();
+
+        // Mise en forme du mois
+        var mois_actuel = date.getMonth();
+        var chaine_mois = Array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
+        var mois = chaine_mois[mois_actuel];
+
+        // Mise en forme de l'heure
+        if ( date.getHours() <= 9 )
+        var heure = '0' + date.getHours();
+        else
+        var heure = date.getHours();
+
+        // Mise en forme des minutes
+        if ( date.getMinutes() <= 9 )
+        var minutes = '0' + date.getMinutes();
+        else
+        var minutes = date.getMinutes();
+
+        // Mise en forme des secondes
+        if ( date.getSeconds() <= 9 )
+        var secondes = '0' + date.getSeconds();
+        else
+        var secondes = date.getSeconds();
+
+        // Construction des chaines finales date et heure
+        datetext += jour_semaine + ' ' + jour + ' ' + mois + ' ' + date.getFullYear();
+        heuretext += heure + ':' + minutes + ':' + secondes;
+        document.getElementById("dynamique").innerHTML = `${datetext} ${heuretext}`;
+    }
+
+    setInterval('rafraichir()',1000);
+
+    // You can also require other files to run in this process
+    require('./renderer.js')
+
+    </script>
+
+</body>
+</html>
